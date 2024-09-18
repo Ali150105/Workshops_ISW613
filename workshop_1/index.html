@@ -1,4 +1,22 @@
-<?php
-date_default_timezone_set("UTC"); // Establece la zona horaria a UTC o la que prefieras
-echo date("Y-m-d H:i:s"); // Muestra la fecha y hora actual en formato YYYY-MM-DD HH:MM:SS
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Date and Time</title>
+</head>
+<body>
+    <h1>Current Date and Time</h1>
+    <p id="currentDateTime"></p>
+
+    <script>
+        function displayCurrentDateTime() {
+            var now = new Date();
+            var dateTimeString = now.toISOString().slice(0, 19).replace("T", " ");
+            document.getElementById("currentDateTime").textContent = dateTimeString;
+        }
+
+        displayCurrentDateTime();
+    </script>
+</body>
+</html>
