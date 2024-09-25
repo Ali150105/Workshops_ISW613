@@ -18,7 +18,7 @@
     <label for="">Nombre</label>
     <input type="text" class="form-control" name="name" id="" value="<?php echo $name; ?>"  placeholder="Your name">
     <label for="">Last Name</label>
-    <input type="text" class="form-control" name="lastname" id="" value="<?php echo $lastName; ?>"  placeholder="Your last name">
+    <input type="text" class="form-control" name="lastname" id="" value="<?php echo $name; ?>"  placeholder="Your last name">
     <label for="">Phone Number</label>
     <input type="text" class="form-control" name="phonenumber" id="" value="<?php echo $phonenumber; ?>"  placeholder="Your phone number">
     <label for="">Email</label>
