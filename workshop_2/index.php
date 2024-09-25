@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Print Name</title>
+  <title>Personal Information</title>
 </head>
 <body>
 <form action="/workshop_2/save.php" method="POST">
