@@ -1,51 +1,52 @@
 <?php
-include('functions.php');
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "workshop_2";
 
-$conn = getConnection();
-$sql = "SELECT users.id, users.firstName, users.lastName, users.email, provinces.name as province 
-        FROM users 
-        JOIN provinces ON users.province_id = provinces.id";
-$result = mysqli_query($conn, $sql);
+// Crea conexión con la base de datos
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verifica la conexión
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM users";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) { //num_rows es una propiedad sql funciona para saber cuantas filas devuelve una consulta sql, por lo que permite saber si viene vacio o no
+    
+    echo "<table border='10'>";
+    echo "User registration Data";
+
+    
+    echo "<tr>";
+        echo "<th>First Name</th>"; 
+        echo "<th>Last Name</th>";  
+        echo "<th>Email</th>";      
+        echo "<th>Province</th>";   
+    echo "</tr>";
+
+    // Bucle que ayuda a mostrar los datos
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+            echo "<td>" . $row['firstName'] . "</td>"; //row es un array asociativo el "." concatena
+            echo "<td>" . $row['lastName'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['province'] . "</td>";
+            //echo "<td>" . $row['password'] . "</td>";
+        echo "</tr>";
+    }
+    
+    echo "</table>";
+    
+} else {
+    echo "No se encontraron resultados.";
+}
+
+// Cerrar la conexión
+$conn->close();
 ?>
+    <br><button type="button" class="btn btn-secondary" onclick="window.location.href='index.php'">Back</button>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Users</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-
-<body>
-  <div class="container">
-    <h1 class="my-4">Users List</h1>
-    <!-- Botón para regresar al formulario de signup -->
-    <a href="../" class="btn btn-secondary mb-3">Regresar formulario</a>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Province</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php while($row = mysqli_fetch_assoc($result)): ?>
-        <tr>
-          <td><?= $row['id'] ?></td>
-          <td><?= $row['firstName'] ?></td>
-          <td><?= $row['lastName'] ?></td>
-          <td><?= $row['email'] ?></td>
-          <td><?= $row['province'] ?></td>
-        </tr>
-        <?php endwhile; ?>
-      </tbody>
-    </table>
-  </div>
-</body>
-
-</html>

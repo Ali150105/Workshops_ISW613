@@ -1,10 +1,14 @@
-<?php 
-  include('functions.php');
-  $provinces = getProvinces();
+<?php
+  //$provinces = getProvinces();
   $error_msg = '';
   if(isset($_GET['error'])) {
     $error_msg = $_GET['error'];
   }
+  $firstName = @$_REQUEST['firstName'];
+  $lastName = @$_REQUEST['lastName'];
+  $email = @$_REQUEST['email'];
+  $province = @$_REQUEST['province'];
+  $password = @$_REQUEST['password'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +27,7 @@
       <p class="lead">This is the signup process</p>
       <hr class="my-4">
     </div>
-    <form method="post" action="signup.php">
+    <form method="post" action="actions/signup.php">
       <div class="error">
         <?php echo $error_msg; ?>
       </div>
@@ -43,9 +47,7 @@
         <label for="province">Provincia</label>
         <select id="province" class="form-control" name="province">
           <?php
-          foreach($provinces as $id => $province) {
-            echo "<option value=\"$id\">$province</option>";
-          }
+          include('utils/functions.php');
           ?>
         </select>
       </div>
@@ -53,11 +55,11 @@
         <label for="password">Password</label>
         <input id="password" class="form-control" type="password" name="password">
       </div>
-      <button type="submit" class="btn btn-primary">Sign up</button>
-      <!-- Botón para ver usuarios registrados -->
-      <a href="users.php" class="btn btn-secondary">Ver usuarios registrados</a>
+      <button type="submit" class="btn btn-primary"> Sign up </button>
+      <button type="button" class="btn btn-secondary" onclick="window.location.href='users.php'">Show Records</button>
     </form>
   </div>
+
 </body>
 
 </html>

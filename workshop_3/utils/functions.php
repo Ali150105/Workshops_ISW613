@@ -1,46 +1,30 @@
 <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "workshop_2";
 
-/**
- *  Gets the provinces from the database
- */
-function getProvinces(): array {
- $conn = getConnection();
-  $sql = "SELECT id, name FROM provinces";
-  $result = mysqli_query($conn, $sql);
-  
-  $provinces = [];
-  while ($row = mysqli_fetch_assoc($result)) {
-    $provinces[$row['id']] = $row['name'];
-  }
-  return $provinces;
+// Crea conexión con la base de datos
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verifica la conexion
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
+// Consulta para obtener los datos de province_name de la tabla province
+$sql = "SELECT * FROM provinces";
+$result = $conn->query($sql);
 
-function getConnection(): bool|mysqli {
-  $connection = mysqli_connect('localhost:3306', 'root', '', 'php_web2');
-  print_r(mysqli_connect_error());
-  return $connection;
+// Verificar si hay resultados y mostrarlos
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<option value='" . htmlspecialchars($row['province_name'], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($row['province_name'], ENT_QUOTES, 'UTF-8') . "</option>";
+    }
+} else {
+    echo "<option value=''>No provinces found</option>";
 }
 
-/**
- * Saves an specific user into the database
- */
-function saveUser($user): bool{
-  $firstName = $user['firstName'];
-  $lastName = $user['lastName'];
-  $email = $user['email'];
-  $password = md5($user['password']);
-  $province_id = $user['province_id'];  // Provincia
-
-  $sql = "INSERT INTO users (firstName, lastName, email, password, province_id) 
-          VALUES('$firstName', '$lastName', '$email','$password', '$province_id')";
-
-  try {
-    $conn = getConnection();
-    mysqli_query($conn, $sql);
-  } catch (Exception $e) {
-    echo $e->getMessage();
-    return false;
-  }
-  return true;
-}
+// Cerrar la conexión
+$conn->close();
+?>
