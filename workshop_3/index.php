@@ -56,7 +56,7 @@
         <input id="password" class="form-control" type="password" name="password">
       </div>
       <button type="submit" class="btn btn-primary"> Sign up </button>
-      <button type="button" class="btn btn-secondary" onclick="window.location.href='users.php'">Show Records</button>
+      <button type="button" class="btn btn-secondary" onclick="window.location.href='users.php'">Show Registers</button>
     </form>
   </div>
 
