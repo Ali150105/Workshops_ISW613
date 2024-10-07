@@ -6,7 +6,7 @@
  */
 function getConnection(): bool|mysqli
 {
-    $connection = mysqli_connect('localhost:3306', 'root', '', 'workshop3');
+    $connection = mysqli_connect('localhost:', 'root', '', 'users');
     print_r(mysqli_connect_error());
     return $connection;
 }
