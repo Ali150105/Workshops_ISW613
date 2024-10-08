@@ -17,15 +17,15 @@
       </div>
       <div class="form-group">
         <label for="first-name">First Name</label>
-        <input id="first-name" class="form-control" type="text" name="firstName">
+        <input id="first-name" class="form-control" type="text" name="firstname">
       </div>
       <div class="form-group">
         <label for="last-name">Last Name</label>
-        <input id="last-name" class="form-control" type="text" name="lastName">
+        <input id="last-name" class="form-control" type="text" name="lastname">
       </div>
       <div class="form-group">
         <label for="province">Provincia</label>
-        <select id="province" class="form-control" name="province">
+        <select id="province" class="form-control" name="province_id">
           <?php
           foreach($provinces as $id => $province) {
             echo "<option value=\"$id\">$province</option>";
@@ -35,7 +35,7 @@
       </div>
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input id="email" class="form-control" type="text" name="email">
+        <input id="email" class="form-control" type="text" name="username">
       </div>
       <div class="form-group">
         <label for="password">Password</label>
