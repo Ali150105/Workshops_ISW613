@@ -10,8 +10,8 @@
     if($user) {
       session_start();
       $_SESSION['user'] = $user;
-      header('Location: /users.php');
+      header('Location: ../users.php');
     } else {
-      header('Location: /index.php?error=login');
+      header('Location: index.php?error=login');
     }
   }

@@ -11,7 +11,7 @@ echo("The password is ". $_POST['password'] . "<br>");
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "workshop_2";
+$dbname = "users";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
