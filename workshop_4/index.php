@@ -1,6 +1,6 @@
 <?php
   include('utils/functions.php');
-  $error_msg = isset($_GET['error']) ? $_GET['error'] : null;
+  $error_msg = isset($_GET['error']) ? $_GET['error'] : '';
 ?>
 <?php require('inc/header.php')?>
   <div class="container-fluid">

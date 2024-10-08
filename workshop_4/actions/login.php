@@ -1,31 +1,19 @@
-
 <?php
-require('../utils/functions.php');
+require_once('../utils/functions.php');
+session_start();
 
 if ($_POST) {
-    $username = $_REQUEST['username'];
-    $password = $_REQUEST['password'];
-
-    // Llamada a la función de autenticación
+    $username = $_POST['username'];
+    $password = $_POST['password'];
     $user = authenticate($username, $password);
-
     if ($user) {
-        session_start();
-        echo"animsdnad";
-        $_SESSION['user'] = $user; // Almacena los datos del usuario en la sesión
-        
-        // Verifica el rol del usuario
-        if ($user['role'] == 'admin') {
-            header('Location: /principal.php'); // Redirige a la página de administrador "principal"
-        } else {
-            header('Location: /users.php'); // Redirige a la página de usuario estándar
-        }
+        $_SESSION['user'] = $user;
+        header('Location: /workshop_4/users.php');
+        exit();
     } else {
-        header('Location: /index.php?error=login'); // Redirige en caso de error en el login
+        header('Location: /workshop_4/index.php?error=Invalid credentials');
+        exit();
     }
 }
-?>
-
-
 
 
