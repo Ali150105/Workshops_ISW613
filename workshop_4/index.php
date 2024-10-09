@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="jumbotron">
       <h1 class="display-4">Login</h1>
-      <p class="lead">User Login</p>
+      <p class="lead">This is the login</p>
       <hr class="my-4">
     </div>
     <form method="post" action="actions/login.php">
