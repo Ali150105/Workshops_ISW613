@@ -1,5 +1,5 @@
 <?php
-require_once('../utils/functions.php');
+require_once('./utils/functions.php');
 session_start();
 
 // Verify if the user is authenticated
