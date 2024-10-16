@@ -4,7 +4,7 @@
  * Obtiene la conexión a la base de datos
  */
 function getConnection(): mysqli {
-    $connection = mysqli_connect("localhost", "root", "", "Workshop4");
+    $connection = mysqli_connect("localhost", "root", "", "workshop4");
     if (!$connection) {
         die("Error de conexión: " . mysqli_connect_error());
     }
