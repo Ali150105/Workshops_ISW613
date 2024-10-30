@@ -27,6 +27,14 @@ class User extends BaseController
     }
 
     public function login(): string {
-      return view('login');
+      
+
+        $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+        $data['user'] = $user;
+        $data['title'] = "User Login";
+        $data['error_msg'] = '';
+        return view('shared/header',$data)
+                .view('user/login', $data)
+                  .view('shared/footer');
     }
 }
