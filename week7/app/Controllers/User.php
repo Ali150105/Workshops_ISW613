@@ -27,8 +27,6 @@ class User extends BaseController
     }
 
     public function login(): string {
-      
-
         $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
         $data['user'] = $user;
         $data['title'] = "User Login";
