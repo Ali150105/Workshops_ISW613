@@ -7,6 +7,10 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/signup', 'User::signup');
-$routes->get('/user/signup', 'User::signup');
-$routes->get('/login', 'User::login');
-$routes->get('/user/login', 'User::login');
+$routes->get('/species', 'Species::index');
+$routes->post('user/register', 'User::create');
+
+
+// $routes->get('tree/(:num)/(:num)', 'Tree::index/$1/$2');
+
+
